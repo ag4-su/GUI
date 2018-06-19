@@ -247,12 +247,9 @@ function GUI.Write(text, identity, log)
 	if log then Log.Write("[" .. os.date("%X") .. "]\t" .. identity .. "\t->\t" .. text) end
 end
 
-local SkipTick = 0
-
-
 function GUI.OnDraw()
 	if not Menu.IsEnabled(GUI.Enabled) then return end
-	if 	SkipTick == 0 then
+
 		if GUI.SelectedLanguage == nil and GUIDB ~= nil then 
 			GUI.SelectedLanguage = GUI.Languages[Menu.GetValue(GUI.Locale) + 1]
 			ApplyTheme()
@@ -332,12 +329,6 @@ function GUI.OnDraw()
 			
 			Renderer.SetDrawColor(hex2rgb("#fff"))
 		end
-	end
-	SkipTick = SkipTick + 1
-	if 	SkipTick == 1 then
-		SkipTick = 0
-	end
-
 end
 
 function GUI.OnMenuOptionChange(option, oldValue, newValue)
@@ -1876,7 +1867,7 @@ function GUI.Get(key, type)
 
     type = type or 0
 	if type == 0 then
-		local t = WrapUtility.ConfigReadString("GUI", key, nil)
+		local t = Wrap.ConfigReadString("GUI", key, nil)
 		if	string.sub(t,1,1) == "~" 
 			and string.sub(t, -1) == "~"
 		then
@@ -1887,8 +1878,8 @@ function GUI.Get(key, type)
 			return t
 		end
 	else
-		GUI.Storage[key] = stringToTable(WrapUtility.ConfigReadString("GUI", key, nil))
-		return stringToTable(WrapUtility.ConfigReadString("GUI", key, nil))
+		GUI.Storage[key] = stringToTable(Wrap.ConfigReadString("GUI", key, nil))
+		return stringToTable(Wrap.ConfigReadString("GUI", key, nil))
 	end
 end
 
