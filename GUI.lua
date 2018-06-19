@@ -1876,7 +1876,7 @@ function GUI.Get(key, type)
 
     type = type or 0
 	if type == 0 then
-		local t = Config.ReadString("GUI", key, nil)
+		local t = WrapUtility.ConfigReadString("GUI", key, nil)
 		if	string.sub(t,1,1) == "~" 
 			and string.sub(t, -1) == "~"
 		then
@@ -1887,8 +1887,8 @@ function GUI.Get(key, type)
 			return t
 		end
 	else
-		GUI.Storage[key] = stringToTable(Config.ReadString("GUI", key, nil))
-		return stringToTable(Config.ReadString("GUI", key, nil))
+		GUI.Storage[key] = stringToTable(WrapUtility.ConfigReadString("GUI", key, nil))
+		return stringToTable(WrapUtility.ConfigReadString("GUI", key, nil))
 	end
 end
 
