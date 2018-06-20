@@ -332,8 +332,9 @@ function GUI.OnDraw()
 end
 
 function GUI.OnMenuOptionChange(option, oldValue, newValue)
+
 	if option == GUI.Locale then
-		GUI.SelectedLanguage = GUI.Languages[newValue]
+		GUI.SelectedLanguage = GUI.Languages[newValue + 1]
 		for k, v in pairs(GUI.Items) do
 			GUI.DeInitialize(k)
 		end
