@@ -1627,7 +1627,7 @@ function GUIDB.Cache()
 		GUIDB.LoadImage(k, "", v)
 	end
 	
-	if (Menu.IsEnabled(GUI.PreCacheItems)) then
+--[[	if (Menu.IsEnabled(GUI.PreCacheItems)) then
 		for k, v in pairs(GUIDB.Items) do
 			GUIDB.LoadImage(k:gsub("item_", ""), GUIDB.IconPath)
 		end
@@ -1651,7 +1651,7 @@ function GUIDB.Cache()
 		for k, v in pairs(GUIDB.Abilities) do
 			GUIDB.LoadImage(k, "", GUIDB.SpellPath .. v)
 		end
-	end
+	end]]
 	
 	GUI.Write("GUIDB cached [" .. GUIDB.TotalLoad .. "]")
 end
